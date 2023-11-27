@@ -1,34 +1,15 @@
 ---
-# definisikan layanan yang akan dibuat
-  services:
-
-#service item-app
-  item-app:                
-
-# Menggunakan image item-app dari GitHub Packages
-  image: ghcr.io/dwi-adhi-soegiarto/item-app:v1
-
-# mengatur kondisi kapan container harus restart
-  restart: always
-  
-# port mapping agar dapat diakses dari port 80 di host
-  ports:
+services: null
+item-app: null
+image: ghcr.io/dwi-adhi-soegiarto/item-app:v1
+restart: always
+ports:
   - 80:8080
-
-# Memastikan bahwa item-app hanya berjalan setelah item-db diluncurkan
-  depends_on :
+depends_on:
   - item-db
-
-# service item-db
-  item-db:
-
-# Menggunakan image mongo 3 dari Docker Hub
-   image: mongo:3
-
-# Memakai volume bernama app-db dengan target /data/db di container.
-   volumes:
-   - app-db:/data/db
-  
-# Membuat satu buah volume bernama app-db
+item-db:
+  image: mongo:3
   volumes:
-  app-db:
+    - app-db:/data/db
+volumes: null
+app-db: null
